@@ -40,10 +40,18 @@ export const BookShelf = () => {
         }
       ]
   );
-  const [bookStatus, setBookStatus] = useState('')
 
-  const updateBookStatus = (id, status) => {
-    setBookStatus(status);
+  const updateBookStatus = (id, newStatus) => {
+    const updateBooks = prevBooks => {
+      const updatedBooks = prevBooks.map(book => {
+        if (book.id.toString().toLowerCase() === id.toString().toLowerCase()) {
+          return {...book, status: newStatus};
+        }
+        return book;
+      })
+      return updatedBooks;
+    }
+    setBooks(updateBooks);
   };
 
   const filterBooks = (status) => {
