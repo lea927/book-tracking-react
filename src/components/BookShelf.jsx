@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Shelf} from "./Shelf.jsx";
+import '../style.css';
 
 export const BookShelf = () => {
   const [books, setBooks] = useState([
@@ -75,20 +76,27 @@ export const BookShelf = () => {
 
   return(
       <>
-        <Shelf
-          books={inProgressBooks}
-          header={parseBookStatus('in_progress')}
-          onUpdateStatus={updateBookStatus}
-        />
-        <Shelf
-          books={upcomingBooks}
-          header={parseBookStatus('not_started')}
-          onUpdateStatus={updateBookStatus}/>
-        <Shelf
-          books={completedBooks}
-          header={parseBookStatus('completed')}
-          onUpdateStatus={updateBookStatus}
-        />
+        <div className="bookshelf-wrapper">
+          <header>
+            <div className="header">
+              <h1>My Reads</h1>
+            </div>
+          </header>
+          <Shelf
+            books={inProgressBooks}
+            header={parseBookStatus('in_progress')}
+            onUpdateStatus={updateBookStatus}
+          />
+          <Shelf
+            books={upcomingBooks}
+            header={parseBookStatus('not_started')}
+            onUpdateStatus={updateBookStatus}/>
+          <Shelf
+            books={completedBooks}
+            header={parseBookStatus('completed')}
+            onUpdateStatus={updateBookStatus}
+          />
+        </div>
       </>
   )
 }
