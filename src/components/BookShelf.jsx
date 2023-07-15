@@ -40,6 +40,11 @@ export const BookShelf = () => {
         }
       ]
   );
+  const [bookStatus, setBookStatus] = useState('')
+
+  const updateBookStatus = (id, status) => {
+    setBookStatus(status);
+  };
 
   const filterBooks = (status) => {
     return books.filter(book => book.status.toLowerCase() === status.toLowerCase());
@@ -62,9 +67,20 @@ export const BookShelf = () => {
 
   return(
       <>
-        <Shelf books={inProgressBooks} header={parseBookStatus('in_progress')}/>
-        <Shelf books={upcomingBooks} header={parseBookStatus('not_started')}/>
-        <Shelf books={completedBooks} header={parseBookStatus('completed')}/>
+        <Shelf
+          books={inProgressBooks}
+          header={parseBookStatus('in_progress')}
+          onUpdateStatus={updateBookStatus}
+        />
+        <Shelf
+          books={upcomingBooks}
+          header={parseBookStatus('not_started')}
+          onUpdateStatus={updateBookStatus}/>
+        <Shelf
+          books={completedBooks}
+          header={parseBookStatus('completed')}
+          onUpdateStatus={updateBookStatus}
+        />
       </>
   )
 }
