@@ -1,9 +1,6 @@
 import '../style.css';
 
-export const Book = ({title, author, id, onUpdateStatus }) => {
-  // will have book prop
-  //  book has properties id, title, status, photo url (can come in later)
-
+export const Book = ({title, author, id, onUpdateStatus, status }) => {
   const handleChange = (e) => {
     const { value } = e.target;
     onUpdateStatus(id, value);
@@ -14,7 +11,7 @@ export const Book = ({title, author, id, onUpdateStatus }) => {
         <div className="book">
           <p>{title}</p>
           <p>{author}</p>
-          <select onChange={handleChange} name="status" id="status-select">
+          <select onChange={handleChange} name="status" id="status-select" value={status}>
             <option value="">Move to...</option>
             <option value="in_progress">Currently Reading</option>
             <option value="not_started">Want to Read</option>

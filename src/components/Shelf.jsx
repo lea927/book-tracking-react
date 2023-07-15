@@ -13,6 +13,7 @@ export const Shelf = ({books, header, onUpdateStatus}) => {
               title={book.title}
               author={book.author}
               onUpdateStatus={onUpdateStatus}
+              status={book.status}
             />
           ))}
         </div>
