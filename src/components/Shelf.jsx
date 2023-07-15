@@ -8,6 +8,7 @@ export const Shelf = ({books, header}) => {
           <Book
             key={book.id}
             title={book.title}
+            author={book.author}
           />
         ))}
       </>
